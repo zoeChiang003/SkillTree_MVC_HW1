@@ -14,7 +14,7 @@ namespace SkillTreeHW1.Controllers
             var costService = new CostService();
             var data = new AccountViewModel()
             {
-                ViewModel = costService.GenCost(100)
+                ViewModel = costService.GetCostFromDb()
             };
             return View(data);
         }

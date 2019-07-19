@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebGrease.Css.Extensions;
 
 namespace SkillTreeHW1.Models
 {
     public class CostService
     {
+
         private Random _random;
         public CostService()
         {
@@ -36,6 +38,24 @@ namespace SkillTreeHW1.Models
             DateTime start = new DateTime(2018, 1, 1);
             int range = (DateTime.Today - start).Days;
             return start.AddDays(_random.Next(range));
+        }
+
+        public List<AccountModel> GetCostFromDb()
+        {
+            var accountListModel = new List<AccountModel>();
+            var accountRepository = new AccountRepository();
+            var accountBooks = accountRepository.GetAccountBooks();
+
+            foreach (var accountBook in accountBooks)
+            {
+                accountListModel.Add(new AccountModel()
+                {
+                    CostType = accountBook.Categoryyy.ToString(),
+                    Cost = accountBook.Amounttt.ToString(),
+                    CostTime = accountBook.Dateee
+                });
+            }
+            return accountListModel;
         }
     }
 }
