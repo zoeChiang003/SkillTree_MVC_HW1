@@ -50,7 +50,7 @@ namespace SkillTreeHW1.Models
             {
                 accountListModel.Add(new AccountModel()
                 {
-                    CostType = accountBook.Categoryyy.ToString(),
+                    CostType = ((CostTypeEnum)accountBook.Categoryyy).ToString(),
                     Cost = accountBook.Amounttt.ToString(),
                     CostTime = accountBook.Dateee
                 });
